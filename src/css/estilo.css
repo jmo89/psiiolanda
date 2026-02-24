@@ -1,0 +1,382 @@
+/* =========================
+   Variáveis e configurações
+   ========================= */
+:root {
+    --primary-color: #eca8fa;
+    --secondary-color: #222222;
+    --accent-color: #f186aa;
+    --highlight-bg: #111111;
+    --text-color: #333;
+    --background-color: #cc78c8;
+    --btn-bg: #000000;
+    --btn-hover-bg: #222222;
+    --btn-bt: #694965;
+
+    /* View Transitions (se estiver usando) */
+    view-transition-name: root;
+}
+
+/* =========================
+   Reset básico
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    display: block;
+}
+
+html, body {
+    font-size: 13px;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/* =========================
+   Elementos base
+   ========================= */
+div, section, .container {
+    text-align: center;
+}
+
+ul {
+    list-style: disc;
+}
+
+li {
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+/* Transições em elementos interativos */
+a,
+button,
+.btn,
+img,
+.menu a,
+.question,
+.gallery-grid img {
+    transition: all 0.3s ease-in-out;
+}
+
+/* =========================
+   Container
+   ========================= */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* =========================
+   Header e navegação
+   ========================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #f1b8f3 !important;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    background-color: #f1b8f3 !important;
+}
+
+header nav > div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+/* Logo / Perfil */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-container img,
+.perfil-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.perfil-img {
+    border: 2px solid var(--primary-color);
+}
+
+/* Menu principal */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu a {
+    color: #000 !important; /* se quiser forçar preto */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Ícone de menu (se for usar em algum breakpoint diferente) */
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Links padrão (cuidado com esse seletor global se usar muitos estilos custom) */
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* =========================
+   Botão de destaque
+   ========================= */
+.destaque-principal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background-color: #fff;
+    color: #582965;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #582965;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.2rem 0 0.5rem 0;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.destaque-principal-btn img {
+    width: 22px;
+    height: 22px;
+}
+
+.destaque-principal-btn-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.destaque-principal-texto {
+    text-align: center;
+    max-width: 400px;
+}
+
+/* =========================
+   Media Queries
+   ========================= */
+
+/* Até 900px: texto do destaque centralizado e largura total */
+@media (max-width: 900px) {
+    .destaque-principal-texto {
+        align-items: center;
+        text-align: center;
+        max-width: 100vw;
+    }
+}
+
+/* Até 768px: esconder menu e ícone (ajuste conforme usar) */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .menu-icon {
+        display: none !important; /* ou block se quiser mostrar o ícone */
+    }
+}
+
+/* Até 700px: reforçar centralização do texto */
+@media (max-width: 700px) {
+    .destaque-principal-texto {
+        text-align: center;
+    }
+}
+
+/* Até 600px: layout de header/sections em coluna */
+@media (max-width: 600px) {
+    header,
+    .hero,
+    .about {
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    header,
+    .about,
+    .hero,
+    .services,
+    .contact,
+    .footer,
+    .experience,
+    .foto-destaque,
+    .faq,
+    .clinic {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    header nav img[alt*="Foto de perfil"] {
+        margin-left: 0.7rem;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        background: #fff;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .logo-container img,
+    .perfil-img {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+    }
+
+    .destaque-principal-btn {
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem 0.5rem 0.7rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Até 400px: tratar largura e overflow geral */
+@media (max-width: 400px) {
+    html,
+    body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    .container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 600px) {
+.sobre {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+}
+.sobre-section {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.experiencia {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.experiencia h2 {
+    text-align: center;
+    font-family: 'playfair display', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin: bottom 2rem;
+}
+
+.experiencia div{
+    background: #f7cff3; 
+    border-radius: 10px; 
+    padding: 1.5rem; 
+    max-width: 340px; 
+    min-width: 220px; 
+    flex: 1 1 220px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.experiencia strong {
+    font-size: 1.1rem;
+}
+
+.experiencia p {
+    margin-top: 0.7rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.experiencia div psi {
+    background: #d3d3d3; 
+    border-radius: 10px; 
+    padding: 1.5rem; 
+    max-width: 340px; 
+    min-width: 220px; 
+    flex: 1 1 220px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: left; 
+    justify-content: left;
+}
+
+.experiencia div servico {
+    background: #d3d3d3; 
+    border-radius: 10px; 
+    padding: 1.5rem; 
+    max-width: 340px; 
+    min-width: 220px; 
+    flex: 1 1 220px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+}
